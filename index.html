@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Students Table Page</title>
+    <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
     <form action="student" method="post">
@@ -16,8 +17,20 @@
         <label for="phone">phone</label>
         <input type="text" name="phone" id="phone">
 
-        <label for=""></label>
-        <input type="text" name="" id="">
+        <label for="email">email</label>
+        <input type="text" name="email" id="email">
+
+        <label for="address">email</label>
+        <input type="text" name="address" id="address">
+
+        <label for="gender">gender</label>
+        <input type="text" name="gender" id="gender">
+        
+        <button id="addStudent">submit</button>
+
     </form>
+
+    <div id="table"></div>
+    <script src="./index.js"></script>
 </body>
 </html>
