@@ -4,3 +4,7 @@ table,th,td{
     padding: 5px 5px 5px 5px;
     margin-top: 10px;
 }
+
+button{
+    margin-top: 10px;
+}
