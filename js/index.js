@@ -16,7 +16,7 @@ class Student{
     }
  };
 
-let students = [];
+ let students = [];
 //getting students array that got saved in local storage
 if(JSON.parse(localStorage.getItem("students")))
 students = JSON.parse(localStorage.getItem("students"));
@@ -29,7 +29,8 @@ let th;
 let tr;
 let td;
 let node;
-let btn;
+let btnEdit;
+let btnDelete;
 
 //showing titles first in table head
 for(obj in students[0]){
@@ -43,7 +44,7 @@ table.appendChild(thead);
 
 //getting the info of students and spreading them in table 
 if(students.length > 0){
-  students.forEach((student)=>{
+  students.forEach((student, i)=>{
      tr = document.createElement('tr');
      for(obj in student){
       node = document.createTextNode(student[obj]);
@@ -51,13 +52,30 @@ if(students.length > 0){
       td.appendChild(node);
       tr.appendChild(td);
      }
-     tbody.append(tr);
+
+     btnEdit = document.createElement('button');
+     btnEdit.innerHTML = 'Edit';
+     btnEdit.setAttribute('class', 'btnEdit');
+     btnEdit.setAttribute('id', `edit${student.id}`);
+
+
+     btnDelete = document.createElement('button');
+     btnDelete.innerHTML = 'Delete';
+     btnDelete.setAttribute('class', 'btnDelete');
+     btnDelete.setAttribute('id', `delete${student.id}`);
+
+    tr.appendChild(btnEdit);
+    tr.appendChild(btnDelete);
+
+    tbody.append(tr);
   
    }
  )
  table.appendChild(tbody);
- document.getElementById('table').appendChild(table);
   }
+
+
+  document.getElementById('table').appendChild(table);
 
 //getting button click in html and creating new student object and adding to students array
 document.getElementById('addStudent').addEventListener('click',()=>{
@@ -75,3 +93,27 @@ document.getElementById('addStudent').addEventListener('click',()=>{
   window.localStorage.setItem("students", JSON.stringify(students));
   location.reload();
  });
+
+ //creting event for pressing delete on student and deleting that student from array
+  document.querySelectorAll('.btnDelete').forEach((btn)=>{
+    btn.addEventListener('click',()=>{
+      for(let i = 0; i < students.length; i++){
+        if(students[i].id == btn.id.slice(6,7)){
+           students.splice(i,1);
+           localStorage.setItem('students',JSON.stringify(students));
+           location.reload();
+        }
+      }
+    });
+ });
+
+
+ document.querySelectorAll('.btnEdit').forEach((btn)=>{
+  btn.addEventListener('click',()=>{
+    for(let i = 0; i < students.length; i++){
+      if(students[i].id == btn.id.slice(4,5)){
+        location.href = './editStudent.html';
+      }
+    }
+  });
+});

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Table Page</title>
+    <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+    <h1>Edit Student</h1>
+    <form action="editStudent" method="post">
+        <label for="editName">Name</label><br>
+        <input type="text" name="name" id="editName"><br>
+
+        <label for="editBirthdate">Birthdate</label><br>
+        <input type="date" name="birthdate" id="editBirthdate"><br>
+
+        <label for="editPhone">Phone</label><br>
+        <input type="text" name="phone" id="editPhone"><br>
+
+        <label for="editEmail">Email</label><br>
+        <input type="email" name="email" id="editEmail"><br>
+
+        <label for="editAddress">Address</label><br>
+        <input type="text" name="address" id="editAddress"><br>
+
+        <label for="editGender">Gender</label><br>
+        <input list="genderList" name="gender" id="editGender">
+        <datalist id="genderList">
+            <option value="Male">
+            <option value="Female">
+        </datalist>
+        <br>
+        
+        <button type="button" id="editStudent">submit</button>
+
+    </form>
+    <script src="./js/editStudent.js"></script>
+</body>
+</html>
